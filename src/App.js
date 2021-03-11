@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import {connect} from 'react-redux';
 import './App.css';
 import {Link} from 'react-router-dom';
@@ -9,15 +9,7 @@ import {auth, createUserProfileDocument} from './firebase/firebase.utils';
   import Header from './component/header/header.component';
   import { setCurrentUser } from './redux/user/user.action';
 
-const MenuPage =() =>(
-  <div>
-    <ul>
-      <li>
-        <Link to='/signIn'>SignIn</Link>
-      </li>
-    </ul>
-  </div>
-)
+
 class App extends React.Component {
    
 
@@ -50,9 +42,19 @@ class App extends React.Component {
       <div>
         <Header/>
         <Switch>
-        <Route exact path='/' component={MenuPage} />
+        {/* <Route exact path='/' component={MenuPage} /> */}
           <Route exact path='/home' component={HomePage} />
-          <Route path='/signin' component={SignIn} />
+         <Route
+            exact
+            path='/signin'
+            render={() =>
+              this.props.currentUser ? (
+                <Redirect to='/' />
+              ) : (
+                <SignIn />
+              )
+            }
+          />
         </Switch>
       </div>
     );

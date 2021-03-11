@@ -11,7 +11,7 @@ const Header = ({currentUser}) => (
       {/* <Logo className='logo' /> */}
     </Link>
     <div className='options'>
-      <Link className='option' to='/shop'>
+      <Link className='option' to='/home'>
         SHOP
       </Link>
       <Link className='option' to='/shop'>

@@ -5,7 +5,7 @@ import './App.css';
 import {Link} from 'react-router-dom';
 import HomePage from './homepage.component';
 import SignIn from '././component/sign-in/sign-in.component';
-import {auth} from './firebase/firebase.utils';
+import {auth, createUserProfileDocument} from './firebase/firebase.utils';
   import Header from './component/header/header.component';
  
 
@@ -29,10 +29,10 @@ class App extends React.Component {
    unsubscribeFromAuth = null;
 
    componentDidMount(){
-     this.unsubscribeFromAuth = auth.onAuthStateChanged(user =>{
-       this.setState({ currentUser: user});
+     this.unsubscribeFromAuth = auth.onAuthStateChanged(async user =>{
+      createUserProfileDocument(user)
+      //  this.setState({ currentUser: user});
 
-       console.log('p',user);
      })
    }
 

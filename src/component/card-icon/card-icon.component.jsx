@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ReactComponent as ShoppingIcon } from '../../assert/crown.svg';
+import { ReactComponent as ShoppingIcon } from '../../assert/shopping-bag.svg';
 
 import './card-icon.styles.scss';
 
